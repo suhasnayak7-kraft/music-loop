@@ -18,7 +18,7 @@ export default function CaseStudy() {
             <div className="mx-auto flex w-full max-w-[1400px] items-start px-4 sm:px-8">
 
                 {/* Left Sidebar */}
-                <aside className="fixed top-14 hidden h-[calc(100vh-3.5rem)] w-60 shrink-0 overflow-y-auto border-r border-slate-200 py-6 pr-6 lg:block border-b-0">
+                <aside className="fixed top-14 hidden h-[calc(100vh-3.5rem)] w-60 shrink-0 overflow-y-auto border-r border-slate-200 py-6 pr-6 lg:block">
                     <nav className="flex flex-col space-y-6">
                         <div>
                             <h4 className="mb-2 rounded-md px-2 py-1 text-sm font-semibold text-slate-900">Application</h4>
@@ -28,9 +28,9 @@ export default function CaseStudy() {
                             </div>
                         </div>
                         <div>
-                            <h4 className="mb-2 rounded-md px-2 py-1 text-sm font-semibold text-slate-900">Links</h4>
+                            <h4 className="mb-2 rounded-md px-2 py-1 text-sm font-semibold text-slate-900">Project Docs</h4>
                             <div className="grid grid-flow-row auto-rows-max text-sm gap-0.5 mt-1">
-                                <a href="https://github.com/suhasnayak7-kraft/music-loop" target="_blank" rel="noreferrer" className="group flex w-full items-center rounded-md border border-transparent px-2 py-2 hover:bg-slate-100 text-slate-600 hover:text-slate-900 transition-colors">GitHub Repository</a>
+                                <a href="https://github.com/suhasnayak7-kraft/music-loop" target="_blank" rel="noreferrer" className="group flex w-full items-center rounded-md border border-transparent px-2 py-2 hover:bg-slate-100 text-slate-600 hover:text-slate-900 transition-colors">Source Code</a>
                             </div>
                         </div>
                     </nav>
@@ -39,126 +39,132 @@ export default function CaseStudy() {
                 {/* Main Content */}
                 <main className="flex-1 lg:pl-[17rem] xl:pr-[17rem] pt-12 pb-16 min-h-screen">
                     <article className="prose prose-slate max-w-[45rem] w-full">
-                        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 text-slate-900">Interaction Sound Lab: Case Study</h1>
-                        <p className="text-sm text-slate-500 mb-8 border-b border-slate-200 pb-8 tracking-wide">Last updated February 23, 2026</p>
+                        <header className="mb-12">
+                            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 text-slate-900">Evolution of the Interaction Sound Lab</h1>
+                            <p className="text-lg text-slate-500">A journey from a complex beat-maker to a precision UX sound engineering tool.</p>
+                            <p className="text-xs font-mono text-slate-400 mt-4 uppercase tracking-widest">v2.0.0 • Published Feb 2026</p>
+                        </header>
 
-                        <p className="text-lg text-slate-800 font-medium mb-12">
-                            The Interaction Sound Lab is a procedural tool for exploring cross-modal feedback (auditory, visual, and physical). Below is the narrative of how we pivoted from a complex beat-maker to a hyper-focused UX engineering tool, mapping out exactly how we use procedural math and Figma Design Tokens to replace `mp3` files.
-                        </p>
+                        <section id="problem" className="scroll-mt-24">
+                            <h2 className="text-2xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">1. The Problem Statement</h2>
+                            <p className="text-slate-700 leading-relaxed mb-6">
+                                Standard web interfaces are often "silent" or rely on heavy, high-latency <code>.mp3</code> files for feedback. This creates a disconnect between the visual action (the click) and the auditory response. Furthermore, most "music" apps are too complex for designers to quickly test <strong>perceptual weight</strong>—how a specific sound influences the feeling of a UI component.
+                            </p>
+                            <div className="bg-slate-50 border-l-4 border-slate-200 p-4 italic text-slate-600 mb-8">
+                                "How can we create a zero-latency, procedural feedback system where every visual token has a corresponding mathematical sound?"
+                            </div>
+                        </section>
 
-                        <h2 id="motivation" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">The Pivot: Form finding Function</h2>
-                        <p className="mb-6 text-slate-700 leading-relaxed">
-                            <strong>v0.1.0:</strong> This project began conceptually as a "Sound to Loop Beat Maker". The initial ideation was massive: audio file exports, databases, and 16-step sequencing algorithms.
-                        </p>
-                        <p className="mb-6 text-slate-700 leading-relaxed">
-                            However, the actual problem we wanted to solve wasn't "how do we make music?", it was "how do we make user interfaces feel more tactile?" We aggressively scoped down and scrapped external `.mp3` libraries entirely in favor of a procedural frontend utility focusing exclusively on programmatic UX/UI feedback sounds using the Native Web Audio API.
-                        </p>
+                        <section id="initial-design" className="scroll-mt-24 mt-16">
+                            <h2 className="text-2xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">2. Initial Design (v0.1.0)</h2>
+                            <p className="text-slate-700 leading-relaxed mb-6">
+                                The project began conceptually as <strong>"Sound to Loop Beat Maker"</strong>. The initial ideation included audio file exports, database configurations with Supabase, a backend UI for sample libraries, and 16-step sequencing algorithms.
+                            </p>
+                            <div className="aspect-video w-full rounded-2xl border border-dashed border-slate-300 bg-slate-50 flex items-center justify-center mb-6 text-slate-400 font-medium">
+                                [v0.1.0 Conceptual Mockup: Dark Sequencer Grid & Sample Library]
+                            </div>
+                            <p className="text-slate-700 leading-relaxed mb-6">
+                                <strong>Why we pivoted:</strong> Looking at the core design requirements, we realized the scope was bloated. The actual problem we wanted to solve wasn't "how do we make music?", it was "how do we make user interfaces feel more tactile?" We aggressively scoped down and pivoted into the <strong>Interaction Sound Lab</strong>.
+                            </p>
+                        </section>
 
-                        <h2 id="the-engine" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">v1.0.0: The Synthesizer Pipeline</h2>
-                        <p className="mb-6 text-slate-700 leading-relaxed">
-                            Web applications often neglect audio because dealing with static `.mp3` files introduces latency. Even a 50ms audio delay ruins the physical "feel" of a click. We needed zero-latency responses.
-                        </p>
-                        <p className="mb-6 text-slate-700 leading-relaxed">
-                            To solve this, we built a <strong>custom physics engine</strong> in React. We established <strong>20 Unique Base Frequencies</strong>—every single icon is assigned a hard-coded bespoke pitch (Hz). For example, a heavy "Delete" action is deeply pitched at 220Hz, whereas a cheerful "Create" action spikes at 680Hz.
-                        </p>
+                        <section id="iterations" className="scroll-mt-24 mt-16">
+                            <h2 className="text-2xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">3. Version Iterations</h2>
 
-                        <h2 id="style-guide" className="text-2xl font-bold mt-16 mb-6 scroll-mt-24 text-slate-900 tracking-tight">Figma Design Tokens & Categories</h2>
-                        <p className="mb-6 text-slate-700 leading-relaxed">
-                            Once the audio pipeline was flawless, we needed the UI to reflect granular semantic control. The app utilizes a strict <strong>Figma Token Hierarchy</strong>. The foundation rests entirely on the neutral `slate` scale, reserving vibrant colors *only* for the semantic categories to map visual cues directly to the audio pitch ranges:
-                        </p>
-                        <div className="overflow-hidden mb-8 rounded-xl border border-slate-200 bg-white shadow-sm">
-                            <table className="w-full text-sm text-left">
-                                <thead className="bg-slate-50 text-slate-900/80 uppercase tracking-wider text-[11px] font-bold">
-                                    <tr>
-                                        <th className="p-4 border-b border-slate-200">Category</th>
-                                        <th className="p-4 border-b border-slate-200">Semantic Token</th>
-                                        <th className="p-4 border-b border-slate-200">Base Pitch</th>
-                                        <th className="p-4 border-b border-slate-200">Usage</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-slate-100">
-                                    <tr className="hover:bg-slate-50 transition-colors">
-                                        <td className="p-4 font-medium text-slate-800">Navigation</td>
-                                        <td className="p-4 font-mono text-blue-600 bg-blue-50/50">blue-*</td>
-                                        <td className="p-4 text-slate-600">~400Hz (Mid)</td>
-                                        <td className="p-4 text-slate-600">Standard routing actions</td>
-                                    </tr>
-                                    <tr className="hover:bg-slate-50 transition-colors">
-                                        <td className="p-4 font-medium text-slate-800">Data Actions</td>
-                                        <td className="p-4 font-mono text-rose-600 bg-rose-50/50">rose-*</td>
-                                        <td className="p-4 text-slate-600">~300Hz (Deep)</td>
-                                        <td className="p-4 text-slate-600">Destructive logic</td>
-                                    </tr>
-                                    <tr className="hover:bg-slate-50 transition-colors">
-                                        <td className="p-4 font-medium text-slate-800">System</td>
-                                        <td className="p-4 font-mono text-violet-600 bg-violet-50/50">violet-*</td>
-                                        <td className="p-4 text-slate-600">~500Hz (Hi-Mid)</td>
-                                        <td className="p-4 text-slate-600">User settings</td>
-                                    </tr>
-                                    <tr className="hover:bg-slate-50 transition-colors">
-                                        <td className="p-4 font-medium text-slate-800">Utilities</td>
-                                        <td className="p-4 font-mono text-emerald-600 bg-emerald-50/50">emerald-*</td>
-                                        <td className="p-4 text-slate-600">~600Hz (High)</td>
-                                        <td className="p-4 text-slate-600">Downloads, positives</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            <div className="space-y-12">
+                                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 relative overflow-hidden group">
+                                    <div className="absolute top-0 right-0 p-3 bg-blue-500/10 text-blue-600 text-[10px] font-bold uppercase tracking-widest rounded-bl-xl group-hover:bg-blue-500 group-hover:text-white transition-colors">v1.0.0</div>
+                                    <h3 className="text-xl font-bold text-slate-900 mb-2">The Synthesizer Pipeline</h3>
+                                    <p className="text-slate-700 leading-relaxed">
+                                        We replaced all static files with the <strong>Native Web Audio API</strong>. We assigned 20 unique base frequencies to Lucide icons and introduced the "Mood Operators" (Neutral, Playful, Secure, Urgent).
+                                        <br /><br />
+                                        <strong>The result:</strong> 80 completely unique tones generated in real-time on the client's processor.
+                                    </p>
+                                </div>
 
-                        <h3 className="text-lg font-bold mt-10 mb-3 text-slate-900">Global UI Tokens</h3>
-                        <p className="mb-4 text-slate-700 leading-relaxed">
-                            Global structural components are built exclusively from mapped Slate tokens to guarantee contrast and consistency across Light and Dark mode variations.
-                        </p>
-                        <ul className="list-disc pl-5 mb-8 text-slate-700 space-y-2 marker:text-slate-300">
-                            <li><code className="text-slate-900 bg-slate-100 px-1 py-0.5 rounded font-mono text-[13px]">bg-app</code>: <code>slate-50</code> (Light) / <code>slate-950</code> (Dark)</li>
-                            <li><code className="text-slate-900 bg-slate-100 px-1 py-0.5 rounded font-mono text-[13px]">bg-surface</code>: <code>white</code> / <code>slate-900</code> — Cards, grids, controls</li>
-                            <li><code className="text-slate-900 bg-slate-100 px-1 py-0.5 rounded font-mono text-[13px]">border-subtle</code>: <code>slate-200</code> / <code>slate-800</code> — Borders for squircles/controls</li>
-                            <li><code className="text-slate-900 bg-slate-100 px-1 py-0.5 rounded font-mono text-[13px]">text-secondary</code>: <code>slate-500</code> / <code>slate-400</code> — Descriptions, inactive tabs</li>
-                        </ul>
+                                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 relative overflow-hidden group">
+                                    <div className="absolute top-0 right-0 p-3 bg-pink-500/10 text-pink-600 text-[10px] font-bold uppercase tracking-widest rounded-bl-xl group-hover:bg-pink-500 group-hover:text-white transition-colors">v2.0.0</div>
+                                    <h3 className="text-xl font-bold text-slate-900 mb-2">The Polished Engine</h3>
+                                    <p className="text-slate-700 leading-relaxed">
+                                        The UI was refined to match the professional nature of the tool. We introduced <strong>Semantic Categories</strong> (Navigation, Data, System, Utilities) and linked them to specific pitch ranges. We also added Dark Mode parity and Typography personalization.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
 
-                        <h2 id="interaction" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">Interactive States & Physics</h2>
-                        <p className="mb-4 text-slate-700 leading-relaxed">
-                            The UI uses tightly coupled Interactive Color Tokens. Depending on the semantic category (e.g. Navigation is Blue), the component mathematically shifts into that color's specific ramp:
-                        </p>
-                        <ul className="list-disc pl-5 mb-8 text-slate-700 space-y-2 marker:text-slate-300">
-                            <li><strong>category-default:</strong> <code>color-500</code> — The active ring state and central visualizer burst.</li>
-                            <li><strong>category-hover-bg:</strong> <code>color-50</code> — The background of the squircle on hover.</li>
-                            <li><strong>category-active-bg:</strong> <code>color-100</code> — The background of the squircle on click.</li>
-                            <li><strong>category-hover-border:</strong> <code>color-300</code> — The border glow of squircle on hover.</li>
-                        </ul>
+                        <section id="code" className="scroll-mt-24 mt-16">
+                            <h2 className="text-2xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">4. Code Evolution: What Changed?</h2>
+                            <p className="text-slate-700 leading-relaxed mb-6">
+                                Initially, the code resided in a massive, monolithic <code>App.jsx</code> file. To ensure professional maintainability, we performed a radical refactor.
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                                <div className="p-4 rounded-xl bg-orange-50 border border-orange-100">
+                                    <h4 className="font-bold text-orange-900 mb-2">Pre-Refactor (Monolith)</h4>
+                                    <p className="text-xs text-orange-800 leading-relaxed italic opacity-80">
+                                        "Hard to debug Web Audio lifecycle when UI state is in the same 500-line file."
+                                    </p>
+                                </div>
+                                <div className="p-4 rounded-xl bg-blue-50 border border-blue-100">
+                                    <h4 className="font-bold text-blue-900 mb-2">Post-Refactor (Modular)</h4>
+                                    <p className="text-xs text-blue-800 leading-relaxed italic opacity-80">
+                                        "Extracted IconGrid, ActiveVisualizer, and MoodSelector into separate logical modules."
+                                    </p>
+                                </div>
+                            </div>
+                            <p className="text-slate-700 leading-relaxed">
+                                <strong>Logic Separation:</strong> We moved all frequency definitions to <code>constants.js</code> and handled the <code>AudioContext</code> creation through an intentional interaction gate to comply with browser safety policies.
+                            </p>
+                        </section>
 
-                        <p className="mb-4 text-slate-700 leading-relaxed">
-                            The physical "Interaction Lifecycle" pushes these colors into motion via a strict physics loop:
-                            <br /><strong>Hover:</strong> The user sees an <code>ease-in-out</code> pop (<code>scale-[1.05]</code>) and elevation (<code>-translate-y-2</code>) signalling weight.
-                            <br /><strong>Click:</strong> The UI instantly dips (<code>scale-95</code>). Simultaneously, the hidden <code>AudioContext</code> fires, and the central visualizer physically throbs using the <code>category-default</code> token.
-                        </p>
+                        <section id="design-system" className="scroll-mt-24 mt-16">
+                            <h2 className="text-2xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">5. Design System: Tokens & Variables</h2>
+                            <p className="text-slate-700 leading-relaxed mb-6">
+                                The foundation rests on a strict <strong>Figma Token Hierarchy</strong>. We reserved vibrant colors *only* for semantic categories, mapping visual cues directly to the audio pitch ranges:
+                            </p>
+                            <div className="overflow-hidden mb-8 rounded-xl border border-slate-200">
+                                <table className="w-full text-sm text-left">
+                                    <thead className="bg-slate-50 text-slate-900 text-[11px] font-bold uppercase tracking-wider">
+                                        <tr>
+                                            <th className="p-4 border-b border-slate-200">Token</th>
+                                            <th className="p-4 border-b border-slate-200">Value</th>
+                                            <th className="p-4 border-b border-slate-200">Mapping</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-slate-100">
+                                        <tr>
+                                            <td className="p-4 font-mono text-blue-600">blue-500</td>
+                                            <td className="p-4">#3B82F6</td>
+                                            <td className="p-4 text-slate-600">Navigation (~400Hz)</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="p-4 font-mono text-rose-600">rose-500</td>
+                                            <td className="p-4">#F43F5E</td>
+                                            <td className="p-4 text-slate-600">Data Actions (~300Hz)</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="p-4 font-mono text-slate-900">scale-95</td>
+                                            <td className="p-4">0.95x</td>
+                                            <td className="p-4 text-slate-600">Active physical depression</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
 
-                        <h2 id="typography" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">Typography</h2>
-                        <p className="mb-4 text-slate-700 leading-relaxed">
-                            Typography significantly dictates the perceived "weight" of audio signals. By hot-swapping between the highly engineered <strong>Space Grotesk</strong> or the bouncy, rounded <strong>Poppins</strong>, a UX researcher can immediately hear how the exact same 300Hz square wave "feels" completely different depending on the visual framing around it.
-                        </p>
-                        <ul className="list-disc pl-5 mb-8 text-slate-700 space-y-3 marker:text-slate-300">
-                            <li><strong className="text-slate-900 font-sans">Inter:</strong> Default system fallback, highly parsed and clean.</li>
-                            <li><strong className="text-slate-900" style={{ fontFamily: "Poppins" }}>Poppins:</strong> Friendly and rounded, matching bouncy tones perfectly.</li>
-                            <li><strong className="text-slate-900" style={{ fontFamily: "Space Grotesk" }}>Space Grotesk:</strong> Engineered and strict, pairs with "Secure" square waves.</li>
-                            <li><strong className="text-slate-900" style={{ fontFamily: "Roboto" }}>Roboto:</strong> Standard corporate reliability.</li>
-                            <li><strong className="text-slate-900" style={{ fontFamily: "Urbanist" }}>Urbanist:</strong> Modern geometric structure.</li>
-                        </ul>
-
-                        <p className="mb-4 text-slate-700 leading-relaxed">
-                            <strong>System Scaling:</strong>
-                            <br />- <code>text-4xl</code> (36px / 40px LH) — App Titles with <code>tracking-tight</code>.
-                            <br />- <code>text-lg</code> (18px / 28px LH) — Descriptions.
-                            <br />- <code>text-sm</code> (14px / 20px LH) — Mood Tabs and Dropdowns (<code>font-semibold</code>).
-                            <br />- <code>text-xs</code> (12px / 16px LH) — Grid Titles and Icon Labels (<code>tracking-widest</code>).
-                        </p>
-
-                        <h2 id="sizing" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">Sizing & Spacing</h2>
-                        <ul className="list-disc pl-5 mb-8 text-slate-700 space-y-2 marker:text-slate-300">
-                            <li><strong>Spacing:</strong> The grid strictly adheres to a 4px/8px baseline (<code>spacing-1</code>=4px up to <code>spacing-16</code>=64px).</li>
-                            <li><strong>Element Sizing:</strong> Squircles are rigidly bound to <code>size-16</code> (64x64px), while the central visualizer rests at <code>size-24</code> (96x96px).</li>
-                            <li><strong>Border Radii:</strong> Ranging from <code>rounded-xl</code> (12px) for buttons, <code>rounded-2xl</code> (16px) for massive glass panels, and <code>rounded-full</code> enforcing the central circular threshold.</li>
-                        </ul>
+                        <section id="conclusion" className="scroll-mt-24 mt-16 pt-12 border-t border-slate-100">
+                            <h2 className="text-2xl font-bold text-slate-900 mb-4">Conclusion</h2>
+                            <p className="text-slate-700 leading-relaxed mb-6 italic text-lg">
+                                By bridgeing the gap between Design Tokens and Web Audio synthesis, we've created a laboratory that treats sound as a first-class citizen of UI design.
+                            </p>
+                            <p className="text-slate-700 leading-relaxed">
+                                The Interaction Sound Lab proves that we can create zero-latency, tactile experiences without the weight of traditional assets. The future of SaaS isn't just visual; it's multimodal.
+                            </p>
+                            <div className="mt-12 flex justify-center">
+                                <a href="/" className="h-12 inline-flex items-center justify-center px-10 rounded-full bg-slate-950 text-white font-semibold hover:bg-slate-800 transition-all active:scale-95">
+                                    Return to Lab
+                                </a>
+                            </div>
+                        </section>
 
                     </article>
                 </main>
@@ -166,14 +172,14 @@ export default function CaseStudy() {
                 {/* Right Sidebar */}
                 <aside className="fixed top-14 right-0 hidden h-[calc(100vh-3.5rem)] w-64 overflow-y-auto py-10 pl-8 pr-4 xl:block">
                     <div className="space-y-4">
-                        <h4 className="text-sm font-semibold text-slate-900">On this page</h4>
+                        <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-widest text-[11px]">Contents</h4>
                         <ul className="space-y-3 text-sm text-slate-500">
-                            <li><a href="#motivation" className="hover:text-slate-900 transition-colors">The Pivot</a></li>
-                            <li><a href="#the-engine" className="hover:text-slate-900 transition-colors">Synthesizer Pipeline</a></li>
-                            <li><a href="#style-guide" className="hover:text-slate-900 transition-colors">Figma Tokens & Categories</a></li>
-                            <li><a href="#interaction" className="hover:text-slate-900 transition-colors">Interactive States & Physics</a></li>
-                            <li><a href="#typography" className="hover:text-slate-900 transition-colors">Typography</a></li>
-                            <li><a href="#sizing" className="hover:text-slate-900 transition-colors">Sizing & Spacing</a></li>
+                            <li><a href="#problem" className="hover:text-slate-900 transition-colors">1. Problem Statement</a></li>
+                            <li><a href="#initial-design" className="hover:text-slate-900 transition-colors">2. Initial Design</a></li>
+                            <li><a href="#iterations" className="hover:text-slate-900 transition-colors">3. Version Iterations</a></li>
+                            <li><a href="#code" className="hover:text-slate-900 transition-colors">4. Code Evolution</a></li>
+                            <li><a href="#design-system" className="hover:text-slate-900 transition-colors">5. Design System</a></li>
+                            <li><a href="#conclusion" className="hover:text-slate-900 transition-colors">Conclusion</a></li>
                         </ul>
                     </div>
                 </aside>
