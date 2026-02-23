@@ -39,27 +39,47 @@ export default function CaseStudy() {
                         <p className="text-sm text-slate-500 mb-8 border-b border-slate-200 pb-8 tracking-wide">Last updated February 23, 2026</p>
 
                         <p className="text-lg text-slate-800 font-medium mb-12">
-                            The Interaction Sound Lab is a procedural tool for exploring cross-modal feedback (auditory, visual, and physical). It relies on Native Web Audio implementations to solve the latency issues of MP3s, generating sound dynamically.
+                            The Interaction Sound Lab is a procedural tool for exploring cross-modal feedback (auditory, visual, and physical). But it wasn't always this way. Below is the narrative of how we pivoted from a complex beat-maker to a hyper-focused UX engineering tool, mapping out exactly how we use procedural math to replace `mp3` files.
                         </p>
 
-                        <h2 id="motivation" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">Why I Created This</h2>
+                        <h2 id="motivation" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">The Pivot: Form finding Function</h2>
                         <p className="mb-6 text-slate-700 leading-relaxed">
-                            Web applications often neglect audio because dealing with `.mp3` files introduces latency, bloat, and management overhead. When dealing with fluid UI states, latency ruins the physical "feel" of a click. I built this to demonstrate that we can mathematically proceduralize UX sounds (like "Blips" for neutral actions, or "Thuds" for secure actions) directly on the client's processor using the native <code>AudioContext</code>.
+                            <strong>v0.1.0:</strong> This project began conceptually as a "Sound to Loop Beat Maker". The initial ideation was massive: audio file exports, database configurations with Supabase, a backend UI for sample libraries, and complex 16-step sequencing algorithms.
                         </p>
                         <p className="mb-6 text-slate-700 leading-relaxed">
-                            Cross-modal feedback—when visual, physical (input), and auditory signals align perfectly—creates a dramatic increase in perceived SaaS software quality.
+                            However, looking at the core design requirements, we realized the scope was bloated. The actual problem we wanted to solve wasn't "how do we make music?", it was "how do we make user interfaces feel more tactile?" We aggressively scoped down and pivoted into the <strong>Interaction Sound Lab</strong>. We scrapped Supabase and external `.mp3/.wav` libraries entirely in favor of a purely procedural frontend application focusing exclusively on programmatic UX/UI feedback sounds using the Native Web Audio API.
                         </p>
 
-                        <h2 id="style-guide" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">UI Style Guide & Tokens</h2>
+                        <h2 id="the-engine" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">v1.0.0: The Synthesizer Pipeline</h2>
                         <p className="mb-6 text-slate-700 leading-relaxed">
-                            To ensure the auditory signals mapped correctly to visual signals, I built a strict semantic token system. Vibrant colors are reserved purely for state indication, utilizing "glassmorphism" (blur filters) and `slate` for neutrality.
+                            Web applications often neglect audio because dealing with static `.mp3` files introduces latency, bloat, and management overhead. When dealing with fluid UI states, even a 50ms audio latency ruins the physical "feel" of a click. We needed zero-latency responses.
+                        </p>
+                        <p className="mb-6 text-slate-700 leading-relaxed">
+                            To solve this, we built a <strong>custom physics engine</strong> in React. Instead of generic grouping, we established <strong>20 Unique Base Frequencies</strong>. Every single icon on the board was assigned a hard-coded bespoke pitch (Hz). For example, a heavy "Delete" action is deeply pitched at 220Hz, whereas a cheerful "Create" action spikes at 680Hz.
+                        </p>
+                        <p className="mb-6 text-slate-700 leading-relaxed">
+                            We then built 4 "Mood Operators". These act as mathematical modifiers against the 20 base frequencies to yield <strong>80 completely unique tones</strong>:
+                        </p>
+                        <ul className="list-disc pl-5 mb-8 text-slate-700 space-y-3 marker:text-slate-300">
+                            <li><strong>Neutral (Sine Wave):</strong> 0 pitch modifier, 150ms drop. A clean digital blip.</li>
+                            <li><strong>Playful (Triangle Wave):</strong> 1.5x exponential pitch slide upward, bouncy envelope.</li>
+                            <li><strong>Secure (Square Wave):</strong> 0.4x pitch cut, 100Hz secondary pop transient, instantaneous fast decay envelope. Sounds like a solid metallic thud.</li>
+                            <li><strong>Urgent (Sawtooth Wave):</strong> 1.25x pitch multiplier, double-trigger delay effect resulting in an aggressive alarm.</li>
+                        </ul>
+
+                        <h2 id="style-guide" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">v2.0.0: The Design Token Architecture</h2>
+                        <p className="mb-6 text-slate-700 leading-relaxed">
+                            Once the audio pipeline was flawless, we needed the UI to reflect the same level of granular semantic control. The app had to look premium, clean, and highly structured ("Clean SaaS" aesthetic).
+                        </p>
+                        <p className="mb-6 text-slate-700 leading-relaxed">
+                            We established a strict <strong>Figma Token Hierarchy</strong>. The foundation rests entirely on the neutral `slate` scale. We reserved vibrant colors *only* for the semantic categories, mapping visual cues directly to the audio pitch ranges:
                         </p>
                         <div className="overflow-hidden mb-8 rounded-xl border border-slate-200 bg-white">
                             <table className="w-full text-sm text-left">
                                 <thead className="bg-slate-50 text-slate-900/80 uppercase tracking-wider text-[11px] font-bold">
                                     <tr>
                                         <th className="p-4 border-b border-slate-200">Category</th>
-                                        <th className="p-4 border-b border-slate-200">Semantic Color</th>
+                                        <th className="p-4 border-b border-slate-200">Semantic Token</th>
                                         <th className="p-4 border-b border-slate-200">Base Pitch</th>
                                         <th className="p-4 border-b border-slate-200">Usage</th>
                                     </tr>
@@ -67,50 +87,41 @@ export default function CaseStudy() {
                                 <tbody className="divide-y divide-slate-100">
                                     <tr className="hover:bg-slate-50 transition-colors">
                                         <td className="p-4 font-medium text-slate-800">Navigation</td>
-                                        <td className="p-4 font-mono text-blue-600 bg-blue-50/50">slate-x / blue-x</td>
+                                        <td className="p-4 font-mono text-blue-600 bg-blue-50/50">blue-*</td>
                                         <td className="p-4 text-slate-600">~400Hz (Mid)</td>
                                         <td className="p-4 text-slate-600">Standard routing actions</td>
                                     </tr>
                                     <tr className="hover:bg-slate-50 transition-colors">
                                         <td className="p-4 font-medium text-slate-800">Data Actions</td>
-                                        <td className="p-4 font-mono text-rose-600 bg-rose-50/50">rose-x</td>
+                                        <td className="p-4 font-mono text-rose-600 bg-rose-50/50">rose-*</td>
                                         <td className="p-4 text-slate-600">~300Hz (Deep)</td>
-                                        <td className="p-4 text-slate-600">Destructive or heavy logic</td>
+                                        <td className="p-4 text-slate-600">Destructive logic</td>
                                     </tr>
                                     <tr className="hover:bg-slate-50 transition-colors">
                                         <td className="p-4 font-medium text-slate-800">System</td>
-                                        <td className="p-4 font-mono text-violet-600 bg-violet-50/50">violet-x</td>
+                                        <td className="p-4 font-mono text-violet-600 bg-violet-50/50">violet-*</td>
                                         <td className="p-4 text-slate-600">~500Hz (Hi-Mid)</td>
-                                        <td className="p-4 text-slate-600">User settings, profiles</td>
+                                        <td className="p-4 text-slate-600">User settings</td>
                                     </tr>
                                     <tr className="hover:bg-slate-50 transition-colors">
                                         <td className="p-4 font-medium text-slate-800">Utilities</td>
-                                        <td className="p-4 font-mono text-emerald-600 bg-emerald-50/50">emerald-x</td>
+                                        <td className="p-4 font-mono text-emerald-600 bg-emerald-50/50">emerald-*</td>
                                         <td className="p-4 text-slate-600">~600Hz (High)</td>
-                                        <td className="p-4 text-slate-600">Downloads, positive tasks</td>
+                                        <td className="p-4 text-slate-600">Downloads, positives</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
-                        <h2 id="typography" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">Typography</h2>
+                        <h2 id="typography" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">Cross-Modal Perception Strategy</h2>
                         <p className="mb-4 text-slate-700 leading-relaxed">
-                            I exposed 5 distinct typefaces to demonstrate how typography significantly dictates the perceived "weight" of the audio signals. Inter is neutral, whereas Space Grotesk feels highly mechanical, slightly altering how the brain interprets the procedural audio physics.
-                        </p>
-                        <ul className="list-disc pl-5 mb-8 text-slate-700 space-y-3 marker:text-slate-300">
-                            <li><strong className="text-slate-900 font-sans">Inter:</strong> Default system fallback, highly parsed and clean.</li>
-                            <li><strong className="text-slate-900" style={{ fontFamily: "Poppins" }}>Poppins:</strong> Friendly and rounded, matching bouncy "Playful" tones perfectly.</li>
-                            <li><strong className="text-slate-900" style={{ fontFamily: "Space Grotesk" }}>Space Grotesk:</strong> Engineered and strict, pairs with "Secure" square waves.</li>
-                            <li><strong className="text-slate-900" style={{ fontFamily: "Roboto" }}>Roboto:</strong> Standard corporate reliability.</li>
-                            <li><strong className="text-slate-900" style={{ fontFamily: "Urbanist" }}>Urbanist:</strong> Modern geometric structure.</li>
-                        </ul>
-
-                        <h2 id="technical" className="text-2xl font-bold mt-16 mb-4 scroll-mt-24 text-slate-900 tracking-tight">Technical Details</h2>
-                        <p className="mb-4 text-slate-700 leading-relaxed">
-                            The application is built on <strong>Vite, React 18, and Tailwind</strong>. It operates around an 80-permutation requirement, multiplying 20 unique base button Hz values by 4 mathematical mood envelopes (Sine, Triangle, Square, Sawtooth) inside a <code>useAudio.js</code> hook.
+                            The "Interaction Lifecycle" we built is a tightly knit loop:
+                            <br /><strong>Hover:</strong> The user sees an `ease-in-out` scale pop (`scale-[1.05]`) signalling weight.
+                            <br /><strong>Click:</strong> The UI instantly dips (`scale-95`). Simultaneously, the hidden <code>AudioContext</code> fires the mathematical algorithm, and the central visualizer physically throbs with the category's token color.
                         </p>
                         <p className="mb-4 text-slate-700 leading-relaxed">
-                            All components are modularised using Shadcn UI standards. We strictly implement the <code>cn()</code> utility to parse classes. <code>App.jsx</code> is strictly reserved for high-level State processing and Context rendering, banning "Monolithic" massive file architectures.
+                            To push this perception testing further, we built a Native Dark Mode toggle and connected 5 distinct Google Fonts via a Shadcn UI dropdown.
+                            Typography significantly dictates the perceived "weight" of audio signals. By hot-swapping between the highly engineered <strong>Space Grotesk</strong> or the bouncy, rounded <strong>Poppins</strong>, a UX researcher can immediately hear how the *exact same* 300Hz square wave "feels" completely different depending on the visual framing around it.
                         </p>
 
                     </article>
