@@ -3,10 +3,10 @@ import { ICON_GRIDS, ACTION_FREQUENCIES } from '../constants';
 
 export function IconGrid({ activeIcon, handleIconClick }) {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 bg-white/50 p-8 rounded-3xl border border-slate-100 shadow-sm backdrop-blur-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 bg-white/50 dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm backdrop-blur-sm">
             {ICON_GRIDS.map((grid, groupIdx) => (
                 <div key={groupIdx} className="flex flex-col items-center">
-                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 border-b-2 border-slate-100 pb-3 w-full text-center">
+                    <h3 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-6 border-b-2 border-slate-100 dark:border-slate-800 pb-3 w-full text-center">
                         {grid.title}
                     </h3>
 
@@ -28,10 +28,10 @@ export function IconGrid({ activeIcon, handleIconClick }) {
                                         className={`
                       group relative w-16 h-16 rounded-2xl flex items-center justify-center
                       transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                      border bg-white
-                      ${!isActive ? `hover:shadow-lg ${colors.border} ${colors.bgHover} hover:-translate-y-2 border-slate-200` : ''}
+                      border bg-white dark:bg-slate-950
+                      ${!isActive ? `hover:shadow-lg ${colors.border} ${colors.bgHover} dark:hover:bg-slate-800 hover:-translate-y-2 border-slate-200 dark:border-slate-800` : ''}
                       active:scale-90 ${colors.bgActive}
-                      ${isActive ? `ring-2 ${colors.ring} ring-offset-4 border-transparent shadow-md` : ''}
+                      ${isActive ? `ring-2 ${colors.ring} ring-offset-4 dark:ring-offset-slate-950 border-transparent shadow-md` : ''}
                     `}
                                     >
                                         <Icon

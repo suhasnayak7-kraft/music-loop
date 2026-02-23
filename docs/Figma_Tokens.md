@@ -63,13 +63,16 @@ These are the raw color values utilized in the application. In Figma, these shou
 In Figma, alias these semantic tokens to the color primitives above.
 
 ### Global UI
-- `bg-app`: `slate-50` (App background)
-- `bg-surface`: `white` `#FFFFFF` (Cards, grids, controls)
-- `border-subtle`: `slate-200`
-- `border-divider`: `slate-100`
-- `text-primary`: `slate-900` (Headings)
-- `text-secondary`: `slate-500` (Descriptions, inactive tabs)
-- `text-tertiary`: `slate-400` (Labels, grid titles)
+| Token | Light Mode Value | Dark Mode Value | Usage |
+|-------|------------------|-----------------|-------|
+| `bg-app` | `slate-50` | `slate-950` | App background |
+| `bg-surface` | `white` | `slate-900` | Cards, grids, controls |
+| `bg-surface-elevated` | `white` | `slate-950` | Squircles, selects |
+| `border-subtle` | `slate-200` | `slate-800` | Borders for squircles/controls |
+| `border-divider` | `slate-100` | `slate-800` | Grid separating lines |
+| `text-primary` | `slate-900` | `white` | Headings |
+| `text-secondary` | `slate-500` | `slate-400` | Descriptions, inactive tabs |
+| `text-tertiary` | `slate-400` | `slate-500` | Labels, grid titles |
 
 ### Interactive States (Per Category)
 For each of the 4 semantic categories (Blue, Rose, Violet, Emerald), the logic is strictly bound to these tonal ramps:
@@ -89,7 +92,11 @@ For each of the 4 semantic categories (Blue, Rose, Violet, Emerald), the logic i
 The application uses standard system sans-serif fonts, scaled neatly using Tailwind's default configuration.
 
 ### Font Families
-- `font-sans`: `ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial`
+- `sans` (Inter): `ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial`
+- `poppins`: `"Poppins", sans-serif`
+- `space-grotesk`: `"Space Grotesk", sans-serif`
+- `roboto`: `"Roboto", sans-serif`
+- `urbanist`: `"Urbanist", sans-serif`
 
 ### Font Sizes & Line Heights
 - `text-4xl`: Size: `36px` / Line Height: `40px` (Used for App Title)

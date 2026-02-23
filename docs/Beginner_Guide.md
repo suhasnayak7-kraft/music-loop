@@ -63,10 +63,10 @@ The custom custom React Hook. A "Hook" is just a reusable Javascript function th
 *   We export a function called `playTone(mood, actionId)` that accepts exactly two arguments, does all the Web Audio math described in Section 2, and plays the sound to the speakers.
 
 ### `src/App.jsx`
-The Brain and the Canvas. This is our primary React Component. 
-*   **React State**: At the top, you see `const [activeMood, setActiveMood] = useState(...)`. State is short-term memory. When a user clicks a mood tab, `setActiveMood` is called. React notices the "memory" changed, so it immediately redraws the screen to highlight the new tab.
+The Brain and the Canvas. This is our primary React base layout component. 
+*   **React State**: At the top, you see `const [activeMood, setActiveMood] = useState(...)`. State is short-term memory. When a user clicks a mood tab, `setActiveMood` is called. React notices the "memory" changed, so it immediately redraws the screen. The same logic applies to the overarching **Theme State** (`setTheme('dark')`) and **Typography State** (`setFont`). Updating these instantly triggers a re-render that swaps the CSS classes over the entire document!
 *   **The First Interaction Bypass**: You will see a `useEffect` hook listening to the `window` for a `click`. Remember how browsers block autoplaying sound? This code waits for the user to click *anywhere* on the screen for the very first time, and secretly initializes the `AudioContext` while it is allowed. 
-*   **The Grid Mapper**: Toward the bottom of the return statement, you will see `{ICON_GRIDS.map((grid) => ...)}`. This is how React shines. Instead of writing 20 separate `<button>` tags, we simply write a `map` function that iterates through the data in `constants.js` and stamps out a perfectly styled button for every item in the list dynamically.
+*   **The Component Tree**: Toward the bottom of the return statement, you will notice we import modular child blocks like `<HeaderControls />`, `<MoodSelector />`, and `<IconGrid />`. This is how React shines. Instead of having one massive unreadable layout, we split the application into small blocks and pass our "state" down as arguments (props) so they know how to render.
 
 ---
 
