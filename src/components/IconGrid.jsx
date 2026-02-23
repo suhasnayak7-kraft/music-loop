@@ -27,11 +27,11 @@ export function IconGrid({ activeIcon, handleIconClick }) {
                                         title={`Frequency: ${ACTION_FREQUENCIES[item.id] || 400}Hz`}
                                         className={`
                       group relative w-16 h-16 rounded-2xl flex items-center justify-center
-                      transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                      transition-all duration-300 ease-in-out
                       border bg-white dark:bg-slate-950
-                      ${!isActive ? `hover:shadow-lg ${colors.border} ${colors.bgHover} dark:hover:bg-slate-800 hover:-translate-y-2 border-slate-200 dark:border-slate-800` : ''}
-                      active:scale-90 ${colors.bgActive}
-                      ${isActive ? `ring-2 ${colors.ring} ring-offset-4 dark:ring-offset-slate-950 border-transparent shadow-md` : ''}
+                      ${!isActive ? `hover:shadow-xl ${colors.border} ${colors.bgHover} dark:hover:bg-slate-800 hover:-translate-y-2 hover:scale-[1.05] border-slate-200 dark:border-slate-800` : ''}
+                      active:scale-95 ${colors.bgActive}
+                      ${isActive ? `ring-2 ${colors.ring} ring-offset-4 dark:ring-offset-slate-950 border-transparent shadow-md scale-105` : ''}
                     `}
                                     >
                                         <Icon

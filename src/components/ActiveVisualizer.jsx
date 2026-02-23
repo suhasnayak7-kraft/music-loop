@@ -15,7 +15,7 @@ export function ActiveVisualizer({ isPlaying, activeIcon }) {
                 )}
                 <div className={`
           relative z-10 w-24 h-24 rounded-full flex items-center justify-center
-          transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+          transition-all duration-300 ease-in-out
           ${isPlaying && activeIcon
                         ? `${activeIcon.colorClasses?.bg || 'bg-slate-500'} text-white shadow-xl scale-[1.15] ${activeIcon.colorClasses?.shadow || ''}`
                         : 'bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-400 shadow-sm'}
