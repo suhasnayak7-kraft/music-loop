@@ -25,7 +25,19 @@ Interactions must feel incredibly snappy but distinct.
 **Never introduce static audio files.**
 The core premise of this project is procedural generation under the 80-permutation requirement. Every icon must have a mathematical base pitch hardcoded in `constants.js` that scales dynamically under the 4 Mood modifier functions in `useAudio.js` (Sine, Triangle, Square, Sawtooth + pitch multipliers).
 
-## 3. Workflow Commit Standards
+## 3. Framework & UI Component Pipeline
+
+### 3.1. React & Vite Framework Rules
+- **Component Architecture:** The application must remain highly modular. Do not bloat `App.jsx`. Extract logical UI blocks (like Headers, Selectors, Grids) into `src/components/`. 
+- **State Management:** Keep state as high up the component tree as necessary, passing down strict props. Avoid heavy context providers unless dealing with global themes.
+
+### 3.2. Shadcn UI & Styling Mandate
+- **Shadcn as a Baseline:** We utilize Shadcn UI elements (`<Select>`, `<Switch>`, etc.) to ensure baseline accessibility and rapid development without tying us to a heavy npm library. 
+- **The Rule of Acquisition:** To add new UI components, always fetch them via the Shadcn CLI: `npx shadcn@latest add [component-name]`. **Do not build complex base elements (like Dropdowns or Dialogs) from scratch.**
+- **File Structure:** All fetched Shadcn components automatically install into `src/components/ui/`. Never modify these raw files directly unless absolutely required for a bug fix; instead, wrap or style them from the parent components.
+- **Tailwind Extension:** We strictly use the `cn()` utility (clsx + tailwind-merge) provided by the Shadcn library to dynamically parse class names and state variations safely.
+
+## 4. Workflow Commit Standards
 Whenever a new feature or design tweak is implemented, follow this strict cadence:
 1. Modularize code if possible (e.g., fetching a Shadcn component to `src/components/ui`).
 2. Update the `Version_History.md` if the change is structural.
