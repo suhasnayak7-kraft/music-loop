@@ -1,0 +1,58 @@
+# Sound to Loop Beat Maker
+
+This application will be a web-based beat maker that allows users to record their own sounds (or upload audio files) and sequence them into looping beats. It will leverage the Web Audio API for precise timing and audio manipulation, built with Vanilla HTML, CSS, and JavaScript to keep it lightweight and fast.
+
+## User Review Required
+> [!IMPORTANT]
+> Please review the proposed features and design.
+> 
+> Key questions to consider:
+> 1. Do you prefer a simple 16-step grid sequencer, or a more free-form loop pedal approach?
+> 2. Are there any specific audio effects you want out of the box (e.g., pitch shifting, reverb)?
+> 3. Should we include export functionality (downloading the beat as a WAV file) in the initial version?
+
+## Proposed Architecture & Features
+
+### Core Technologies
+- **Frontend Core**: HTML5, Vanilla JavaScript (ES6+).
+- **Styling**: Vanilla CSS with a premium, sleek dark-mode aesthetic (CSS Variables, Flexbox/Grid, smooth animations).
+- **Audio Engine**: Web Audio API for low-latency playback, scheduling, and recording (MediaRecorder API).
+
+### Key Components
+
+#### 1. Audio Input (The "Sound")
+- **Microphone Integration**: Allow users to record a short snippet of audio directly from their microphone.
+- **File Upload**: Provide a drag-and-drop zone to load existing `.wav` or `.mp3` files.
+- **Sample Trimming**: Basic UI to set start and end points of the recorded/uploaded sample.
+
+#### 2. The Sequencer (The "Loop")
+- **Step Sequencer**: A standard 16-step grid (like an 808 drum machine) where users can place triggers for their recorded sounds.
+- **Multiple Tracks**: Support for multiple sound channels (e.g., Kick, Snare, Hi-hat, Custom Sample 1, Custom Sample 2) so users can layer sounds.
+- **BPM Control**: A slider/input to adjust the tempo (Beats Per Minute) of the loop.
+
+#### 3. User Interface (The "Maker")
+- **Transport Controls**: Play, Pause, Stop buttons.
+- **Mixer**: Volume sliders and mute buttons for each track.
+- **Visualizer**: A dynamic waveform or simple level meter to make the app feel alive and responsive.
+
+## Implementation Steps
+
+1. **Project Setup**: Initialize `index.html`, `styles.css`, and `app.js`.
+2. **UI Layout**: Build the static structure of the sequencer, transport, and audio input areas.
+3. **Audio Engine Initialization**: Set up the Web Audio API `AudioContext`.
+4. **Recording Feature**: Hook up `navigator.mediaDevices.getUserMedia` to record audio buffers.
+5. **Sequencer Logic**: Implement the step scheduling logic using Web Audio API's precise clock (`context.currentTime`).
+6. **Integration**: Tie the UI grid to the audio engine so toggling a step schedules a sound.
+7. **Styling & Polish**: Apply the premium dark mode aesthetic, smooth hover effects, and active step illumination.
+
+## Verification Plan
+
+### Automated Tests
+- None initially planned, as this is a vanilla JS project relying heavily on browser APIs (`Web Audio API`, `MediaRecorder`) which are complicated to mock in unit tests without a comprehensive testing framework. We will rely on manual browser verification.
+
+### Manual Verification
+1. I will use a local HTTP server (using Python or `npx serve`) to serve the project files.
+2. I will use the browser automation tool to open the app and verify the visual layout.
+3. I will test adding active steps to the sequencer grid visually.
+4. I will test the Play/Stop buttons.
+5. Since audio output and microphone input are difficult to fully test in a headless/automated browser environment, I will rely heavily on you (the USER) to open the app in your local browser, test recording a sound, and verify the sequencer timing and audio playback is glitch-free.
