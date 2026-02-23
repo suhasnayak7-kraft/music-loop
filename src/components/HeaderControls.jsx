@@ -25,17 +25,28 @@ export function HeaderControls({ theme, setTheme, font, setFont }) {
                 </Select>
             </div>
 
-            {/* Dark Mode Toggle */}
-            <div className="flex items-center gap-3">
-                <Sun size={18} className={`transition-colors ${theme === 'light' ? 'text-amber-500' : 'text-slate-500'}`} />
-                <Switch
-                    checked={theme === 'dark'}
-                    onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
-                    className="data-[state=checked]:bg-pink-500"
-                />
-                <Moon size={18} className={`transition-colors ${theme === 'dark' ? 'text-blue-400' : 'text-slate-400'}`} />
-            </div>
+            {/* Right Controls: Dark Mode & Case Study */}
+            <div className="flex items-center gap-6">
+                <a
+                    href="/case-study"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                >
+                    Case Study
+                </a>
 
+                <div className="flex items-center gap-3">
+                    <Sun size={18} className={`transition-colors ${theme === 'light' ? 'text-amber-500' : 'text-slate-500'}`} />
+                    <Switch
+                        checked={theme === 'dark'}
+                        onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
+                        className="data-[state=checked]:bg-pink-500"
+                    />
+                    <Moon size={18} className={`transition-colors ${theme === 'dark' ? 'text-blue-400' : 'text-slate-400'}`} />
+                </div>
+
+            </div>
         </div>
     );
 }
