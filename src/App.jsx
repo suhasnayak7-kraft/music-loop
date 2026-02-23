@@ -48,8 +48,30 @@ export default function App() {
                 </header>
 
                 {/* Mood Tabs */}
-                <div className="flex justify-center">
-                    <div className="bg-white p-1.5 rounded-2xl shadow-sm border border-slate-200 inline-flex flex-wrap justify-center gap-1">
+                {/* Mood Selector: Responsive */}
+                <div className="flex justify-center w-full max-w-xs mx-auto sm:max-w-none">
+                    {/* Mobile Dropdown */}
+                    <div className="sm:hidden w-full relative">
+                        <select
+                            value={activeMood}
+                            onChange={(e) => setActiveMood(e.target.value)}
+                            className="w-full appearance-none bg-white border border-slate-200 text-slate-900 text-sm font-semibold rounded-2xl p-4 pr-10 shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent transition-all"
+                        >
+                            {MOODS.map(mood => (
+                                <option key={mood.id} value={mood.id}>
+                                    {mood.label}
+                                </option>
+                            ))}
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    {/* Desktop Tabs */}
+                    <div className="hidden sm:inline-flex bg-white p-1.5 rounded-2xl shadow-sm border border-slate-200 flex-wrap justify-center gap-1">
                         {MOODS.map(mood => (
                             <button
                                 key={mood.id}
